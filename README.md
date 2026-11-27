@@ -39,7 +39,7 @@ Then visit http://localhost:8080.
 
 ## Still to decide before it goes live
 
-- Where Get in touch messages, quote requests and Stay in the loop subscriptions go, and a booking-calendar link for the 15-minute conversations (for now they open Get in touch). The form shows a "not connected yet" note for now.
+- Where Get in touch messages, quote requests and Stay in the loop subscriptions go, and the Calendly link for the 15-minute conversations: put it in `data-calendly` on `#calendly` in index.html (until then the button leads to the message form in Book a private session). The form shows a "not connected yet" note for now.
 - The Instagram, LinkedIn and Substack addresses, the ticket links for each performance. The app tile and the top bar's The app go straight to phononaut.com.
 - When, and whether, it replaces the current acousticstates.com (that needs the domain pointed at GitHub Pages).
 - Fonts come from Google Fonts. Self-hosting them would avoid sending visitors' addresses to Google.

@@ -785,3 +785,14 @@ html{scroll-padding-top:76px}
 #h7 .price p.pbtn .glassbtn{text-align:left;line-height:1.6}
 /* the hero words: no tight halo, which made the light lettering read as bold */
 #h7 .st2{text-shadow:0 0 28px rgba(255,248,244,.7);font-weight:300}
+
+/* ---- Book a private session: its own window with the prices (27 Nov) ---- */
+#h7 #private .lead{margin:0}
+#h7 #private .calrow{margin:0 0 6px}
+#h7 #private .pricebox{padding:6px 0 0}
+#h7 #private .pricebox .lbl{margin-top:0}
+#h7 #private .pnote{margin:12px 0 0;font-family:var(--body);font-size:16px;color:var(--dim)}
+#h7 #private .tailor{padding:18px 20px;border-radius:6px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.7)}
+#h7 #private .tailor h3{font-family:var(--body);font-weight:400;font-size:20px;margin:0 0 8px}
+#h7 #private .tailor p{margin:0 0 8px;font-family:var(--body);font-size:16px;line-height:1.5;color:#3d3848}
+#h7 #private .lbl{font-family:var(--util);font-weight:400;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:10px 0 0;padding-bottom:10px;border-bottom:1px solid var(--line)}

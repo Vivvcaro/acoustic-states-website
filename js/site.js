@@ -109,6 +109,28 @@
       show(touch, '#c-name');
     });
   });
+  // Book a private session: its own window, with the starting prices and the 15-minute conversation.
+  // The calendar link goes in data-calendly on #calendly; until then the button leads to the message form below it.
+  var priv = document.getElementById('private');
+  document.querySelectorAll('[data-open-private]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!openEl) opener = b;
+      document.getElementById('psent').textContent = '';
+      show(priv, '#calendly');
+    });
+  });
+  var cal = document.getElementById('calendly');
+  if (cal) {
+    var url = cal.getAttribute('data-calendly');
+    if (url) { cal.href = url; cal.target = '_blank'; cal.rel = 'noopener'; }
+    else cal.addEventListener('click', function (e) { e.preventDefault(); var n = document.getElementById('p-name'); n.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { n.focus({ preventScroll: true }); }, 400); });
+  }
+  var pform = document.getElementById('pform');
+  if (pform) pform.addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('psent').textContent = 'Thank you. This form is not connected yet, so nothing was sent.';
+  });
   // Request a quote (group sessions): the venue's sound system question is for public sessions only
   var quote = document.getElementById('quote');
   document.querySelectorAll('[data-open-quote]').forEach(function (b) {

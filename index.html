@@ -210,6 +210,40 @@
       </form>
     </div>
   </div>
+  <div class="touch" id="private" hidden>
+    <div class="scrim" data-close-touch></div>
+    <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="priv-h">
+      <div class="g gsoft"></div><div class="grain"></div>
+      <form class="cform vellum" id="pform" novalidate>
+        <button type="button" class="x" data-close-touch aria-label="Close">×</button>
+        <div class="chead"><svg viewBox="0 0 100 100" width="40" height="40" aria-hidden="true"><use href="#J4g"/></svg><h2 class="cap av" id="priv-h" aria-label="Book a private session"><span aria-hidden="true"><span class="nw">Book</span> <span class="nw"><span class="lam">V</span></span> <span class="nw">priv<span class="lam">V</span>te</span> <span class="nw">session</span></span></h2></div>
+        <p class="lead">One to one, at your own pace. Book a 15-minute conversation to talk about your intention and get a personalised quote.</p>
+        <p class="calrow"><a class="glassbtn" id="calendly" href="#p-name" data-calendly="">Book a 15-minute conversation →</a></p>
+        <div class="pricebox">
+          <h4 class="lbl">Individual private sessions, starting from</h4>
+          <ul class="tiers">
+            <li><span>Microdose</span><b>£200</b></li>
+            <li><span>Medium dose</span><b>£280</b></li>
+            <li><span>Macrodose</span><b>£400</b></li>
+          </ul>
+          <p class="pnote">Starting prices for in-person sessions, including a surround sound system.</p>
+        </div>
+        <div class="tailor">
+          <h3>Tailored private sessions</h3>
+          <p>Private sessions can be tailored to your personality traits, ways of listening and intention.</p>
+          <p>Optional, at extra cost: add biomarkers to track changes over time.</p>
+        </div>
+        <h4 class="lbl">Or send a message</h4>
+        <div class="two">
+          <label for="p-name">Name<input id="p-name" name="name" autocomplete="name"></label>
+          <label for="p-email">Email<input id="p-email" name="email" type="email" autocomplete="email"></label>
+        </div>
+        <label for="p-msg">Message<textarea id="p-msg" name="message" rows="4"></textarea></label>
+        <input type="hidden" name="subject" value="Private session">
+        <div class="send"><button class="glassbtn dark" type="submit">Send</button><span class="sent" id="psent" role="status"></span></div>
+      </form>
+    </div>
+  </div>
   <div class="touch" id="touch" hidden>
     <div class="scrim" data-close-touch></div>
     <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="touch-h">
@@ -397,26 +431,9 @@
         </svg>
         <h3 class="cap av" aria-label="Individual private sessions"><span aria-hidden="true"><span class="nw">Individu<span class="lam">V</span>l</span> <span class="nw">priv<span class="lam">V</span>te</span> <span class="nw">sessions</span></span></h3>
         <p>One to one, at your own pace.</p>
-        <button type="button" class="glassbtn" data-open-touch data-book="15-minute conversation">Book a 15-minute conversation</button>
+        <button type="button" class="glassbtn" data-open-private>Book a 15-minute conversation</button>
       </article>
     </div>
-        <div class="card vellum price">
-          <h3>Prices</h3>
-          <p>Group sessions are quoted individually, depending on the number of people and the dose.</p>
-          <h4 class="lbl">Individual private sessions, from</h4>
-          <ul class="tiers">
-            <li><span>Microdose</span><b>£200</b></li>
-            <li><span>Medium dose</span><b>£280</b></li>
-            <li><span>Macrodose</span><b>£400</b></li>
-          </ul>
-          <p>Prices are for in-person sessions and include a surround sound system.</p>
-          <p class="pbtn"><button type="button" class="glassbtn" data-open-touch data-book="15-minute conversation and a personalised quote">Book a 15-minute conversation and get a personalised quote</button></p>
-        </div>
-        <div class="card vellum glowcard">
-          <h3>Tailored private sessions</h3>
-          <p>Private sessions can be tailored to your personality traits, ways of listening and intention.</p>
-          <p>Optional, at extra cost: add biomarkers to track changes over time.</p>
-        </div>
       </div>
     </aside>
   </div>
