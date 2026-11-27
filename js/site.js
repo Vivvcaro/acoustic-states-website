@@ -111,7 +111,7 @@
   });
   document.querySelectorAll('[data-close-panel],[data-close-touch]').forEach(function (b) { b.addEventListener('click', hide); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
-  // Subscribe in the Programmes page closes it and glides to Stay close, ready for an email
+  // Subscribe in the Programmes page closes it and glides to Stay in the loop, ready for an email
   document.querySelectorAll('[data-go-subscribe]').forEach(function (b) {
     b.addEventListener('click', function (e) {
       e.preventDefault(); opener = null; hide();

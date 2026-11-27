@@ -683,7 +683,7 @@ footer a{color:inherit}
 #h7 .sp>.grain{display:none}
 @media (max-width:480px){#h7 .tri .tricenter{top:63%;font-size:12px;letter-spacing:.2em}#h7 .tri .tricenter small{font-size:8px}}
 
-/* ---- Stay close: subscribe and follow, after the closing words (27 Nov) ---- */
+/* ---- Stay in the loop: subscribe and follow, after the closing words (27 Nov) ---- */
 #h7 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #h7 .staysec{text-align:center;padding-block:70px 90px;position:relative}
 #h7 .staysec h2{font-size:clamp(20px,2.6vw,30px);letter-spacing:.3em;margin:0 0 12px;color:#2a2540}
@@ -704,3 +704,5 @@ footer a{color:inherit}
 #h7 .bookband{padding-block:30px 80px}
 /* the pale light sits right behind the words (an older rule's fixed height had pushed it above them) */
 #h7 .statement .herobtn::before{height:auto}
+/* the pages' titles are now whole sentences, so they are set smaller, with more air between lines */
+#h7 .ptitle{font-size:clamp(19px,2.3vw,27px);letter-spacing:.22em;line-height:1.45;text-wrap:balance}
