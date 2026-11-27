@@ -135,9 +135,6 @@
     if (!deck) return;
     var cards = Array.prototype.slice.call(deck.children);
     deck.classList.add('deck');
-    var hint = document.createElement('p'); hint.className = 'deckhint';
-    hint.textContent = 'Move over the cards to spread them, and choose one to read.';
-    deck.parentNode.appendChild(hint);
     var spread = false, hover = -1, chosen = -1, n = cards.length, mid = (n - 1) / 2;
     cards.forEach(function (c, i) { c.tabIndex = 0; c.setAttribute('role', 'button'); c.setAttribute('aria-label', 'Read: ' + c.querySelector('figcaption').textContent.trim()); });
     var narrow = function () { return innerWidth <= 640; };
