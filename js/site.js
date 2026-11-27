@@ -76,8 +76,10 @@
   }
 
   /* ---------- overlays: panels and Get in touch ---------- */
-  var openEl = null, opener = null;
+  var openEl = null, opener = null, returnTo = null;
   function show(el, focusSel) {
+    // a form opened from a page (eg. Request a quote from Book a session) returns to that page when closed
+    returnTo = (openEl && openEl !== el && openEl.classList.contains('side') && el.classList.contains('touch')) ? openEl : null;
     if (openEl) openEl.hidden = true;
     opener = opener || document.activeElement;
     openEl = el; el.hidden = false;
@@ -86,6 +88,12 @@
   }
   function hide() {
     if (!openEl) return;
+    if (returnTo) {                                                  // back to the page the form came from
+      var back = returnTo; returnTo = null;
+      openEl.hidden = true; openEl = back; back.hidden = false;
+      var x = back.querySelector('.sx'); if (x) x.focus();
+      return;
+    }
     openEl.hidden = true; openEl = null;
     document.documentElement.style.overflow = '';
     if (opener && opener.focus) opener.focus(); opener = null;
