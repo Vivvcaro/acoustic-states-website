@@ -6,7 +6,7 @@ The design is "Glow and vellum", chosen by Viviana in November 2026. Its frames 
 
 ## See it
 
-Live at **https://vivvcaro.github.io/acoustic-states-website/** (GitHub Pages, published from `main`; every push updates it within a minute or two). It does not replace acousticstates.com.
+Live at **https://acousticstates.com** (GitHub Pages, published from `main`; every push updates it within a minute or two). It replaced the earlier acousticstates.com on 27 November 2026; that earlier site's files are still in the `Acousticweb-` repository.
 
 To try changes on your Mac first, open `index.html` in a browser, or serve the folder:
 
@@ -45,7 +45,6 @@ Get in touch, Request a quote, Book a private session and Stay in the loop all s
 
 - The Calendly link for the 15-minute conversations: put it in `data-calendly` on `#calendly` in index.html (until then the button leads to the message form in Book a private session).
 - The Instagram, LinkedIn and Substack addresses, the ticket links for each performance. The app tile and the top bar's The app go straight to phononaut.com.
-- When, and whether, it replaces the current acousticstates.com (that needs the domain pointed at GitHub Pages).
 - Fonts come from Google Fonts. Self-hosting them would avoid sending visitors' addresses to Google.
 
 The listener quotes are the ones published on acousticstates.com. The prices (Microdose £200, Medium dose £280, Macrodose £400 for individual private sessions) were confirmed by Viviana on 27 November 2026.
