@@ -111,6 +111,20 @@
   });
   document.querySelectorAll('[data-close-panel],[data-close-touch]').forEach(function (b) { b.addEventListener('click', hide); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+
+  /* ---------- the top bar's menu ---------- */
+  var mb = document.querySelector('#h7 .menubtn'), menu = document.getElementById('menu');
+  if (mb && menu) {
+    var setMenu = function (open) {
+      if (open) { var r = mb.getBoundingClientRect(); menu.style.top = (r.bottom + 10) + 'px'; menu.style.right = Math.max(12, innerWidth - r.right) + 'px'; }   // hangs just under the menu button
+      menu.hidden = !open; mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    mb.addEventListener('click', function (e) { e.stopPropagation(); setMenu(menu.hidden); if (!menu.hidden) { var f = menu.querySelector('a'); if (f) f.focus(); } });
+    menu.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('click', function (e) { if (!menu.hidden && !menu.contains(e.target)) setMenu(false); });
+    addEventListener('scroll', function () { if (!menu.hidden) setMenu(false); }, { passive: true });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); mb.focus(); } });
+  }
   // Subscribe in the Programmes page closes it and glides to Stay in the loop, ready for an email
   document.querySelectorAll('[data-go-subscribe]').forEach(function (b) {
     b.addEventListener('click', function (e) {

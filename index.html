@@ -10,6 +10,18 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f3ede9">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>
+  /* the page waits for its own fonts, then fades in, so the words never appear first in a heavier stand-in font */
+  document.documentElement.classList.add('fl');
+  (function () { var done = function () { document.documentElement.classList.remove('fl'); };
+    setTimeout(done, 2000);
+    if (!document.fonts || !document.fonts.load) return done();
+    addEventListener('DOMContentLoaded', function () {
+      Promise.all(['300 1em "Cormorant Garamond"', '400 1em "EB Garamond"', '300 1em "Hanken Grotesk"'].map(function (f) { return document.fonts.load(f); }))
+        .then(function () { requestAnimationFrame(done); }, done);
+    }); })();
+</script>
+<style>html.fl #h7{opacity:0}#h7{transition:opacity .8s ease}@media (prefers-reduced-motion:reduce){#h7{transition:none}}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@300;400;500&display=swap">
@@ -42,8 +54,18 @@
   <div class="grain" style="opacity:.4;z-index:1"></div>
   <header class="nav gut"><div class="wrap">
     <a class="mark" href="#top" aria-label="Acoustic States, home"><svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true"><use href="#J4g"/></svg><span class="cap av" aria-label="Acoustic States"><span aria-hidden="true"><span class="nw"><span class="lam">V</span>coustic</span> <span class="nw">St<span class="lam">V</span>tes</span></span></span></a>
-    <nav class="links" aria-label="Main"><a href="#" data-open-panel="0">Methodology</a><a href="#" data-open-panel="1">Past events</a><a href="#" data-open-panel="2">Research</a><a href="https://phononaut.com" target="_blank" rel="noopener">The app</a><a class="book" href="#" data-open-panel="4">Book a listening session</a></nav>
+    <div class="navr">
+      <a class="book" href="#" data-open-panel="4">Book a session</a>
+      <button type="button" class="menubtn" aria-expanded="false" aria-controls="menu"><span class="sr">Menu</span><span class="mi" aria-hidden="true"><i></i><i></i></span></button>
+    </div>
   </div></header>
+  <nav class="menu" id="menu" aria-label="Main" hidden>
+        <a href="#" data-open-panel="5">Programmes</a>
+        <a href="#" data-open-panel="0">Methodology</a>
+        <a href="#" data-open-panel="1">Past events</a>
+        <a href="#" data-open-panel="2">Research</a>
+        <a href="https://phononaut.com" target="_blank" rel="noopener">The app</a>
+      </nav>
   <div class="hero gut"><div class="wrap">
     <h1 class="cap av" aria-label="Acoustic States"><span aria-hidden="true"><span class="nw"><span class="lam">V</span>coustic</span> <span class="nw">St<span class="lam">V</span>tes</span></span></h1>
     <p class="cap sub av" aria-label="of consciousness"><span aria-hidden="true"><span class="nw">of</span> <span class="nw">consciousness</span></span></p>
@@ -127,6 +149,7 @@
     <div class="wrap">
       <span class="clogo"><svg viewBox="0 0 100 100" width="96" height="96"  aria-hidden="true"><use href="#J4g"/></svg></span>
       <h2 class="cap av" aria-label="Sonic experiences beyond relaxation or entertainment"><span aria-hidden="true"><span class="nw">Sonic</span> <span class="nw">experiences</span> <span class="nw">beyond</span> <span class="nw">rel<span class="lam">V</span>x<span class="lam">V</span>tion</span> <span class="nw">or</span> <span class="nw">entert<span class="lam">V</span>inment</span></span></h2>
+      <a class="glassbtn" href="#" data-open-panel="4">Book a session</a>
     </div>
   </section>
   <section class="staysec gut" aria-labelledby="st-h"><div class="wrap">
@@ -232,7 +255,7 @@
     <button type="button" class="x sx" data-close-panel aria-label="Close">×</button>
     <span class="eyebrow">Research</span><h2 class="cap av ptitle" id="pr-h" aria-label="Acoustic States emerged from Viviana’s PhD research"><span aria-hidden="true"><span class="nw"><span class="lam">V</span>coustic</span> <span class="nw">St<span class="lam">V</span>tes</span> <span class="nw">emerged</span> <span class="nw">from</span> <span class="nw">Vivi<span class="lam">V</span>n<span class="lam">V</span>’s</span> <span class="nw">PhD</span> <span class="nw">rese<span class="lam">V</span>rch</span></span></h2>
     <span class="hero-img"><img src="img/research.jpg" loading="lazy" alt=""></span>
-    <p class="big">Her PhD explored neuroacoustic stimulation as a way of reaching altered states of consciousness: a neuroaesthetics project combining music psychology, neuroscience, sound art, immersive audio, ethnomusicology, ritual, psychedelics and consciousness studies.</p>
+    <p class="big">Viviana’s PhD explores neuroacoustic stimulation as a way of reaching altered states of consciousness: a neuroaesthetics project combining music psychology, neuroscience, sound art, immersive audio, ethnomusicology, ritual, psychedelics and consciousness studies.</p>
     <h4 class="lbl">Past research</h4>
     <div class="card vellum"><h3>Altered states of consciousness induced by sound experiences</h3><p>Exploring altered states of consciousness through immersive sound, featuring music by Max Cooper, Bróna Martin and Barry Truax.</p></div>
     <h4 class="lbl">Upcoming research</h4>
@@ -355,7 +378,12 @@
       </div>
     </aside>
   </div>
-  <footer class="gut"><div class="wrap"><span class="flogo"><svg viewBox="0 0 100 100" width="28" height="28"  aria-hidden="true"><use href="#J4g"/></svg><span>Acoustic States of Consciousness · Viviana Caro · Phantom Fish Ltd</span></span><span><a href="#">Instagram</a> · <a href="#">LinkedIn</a> · <a href="#">Substack</a></span></div></footer>
+  <footer class="gut"><div class="wrap">
+    <span class="flogo"><svg viewBox="0 0 100 100" width="28" height="28" aria-hidden="true"><use href="#J4g"/></svg><span>Acoustic States of Consciousness · Viviana Caro · Phantom Fish Ltd</span></span>
+    <nav class="flinks" aria-label="Footer"><a href="#" data-open-panel="5">Programmes</a><a href="#" data-open-panel="0">Methodology</a><a href="#" data-open-panel="1">Past events</a><a href="#" data-open-panel="2">Research</a><a href="https://phononaut.com" target="_blank" rel="noopener">The app</a><a href="#" data-open-panel="4">Book a session</a></nav>
+    <span class="fsoc"><a href="#">Instagram</a> · <a href="#">LinkedIn</a> · <a href="#">Substack</a></span>
+    <p class="copy">© 2026 Phantom Fish Ltd. All rights reserved. Acoustic States, its name, logo, music, words and images may not be copied or used without permission.</p>
+  </div></footer>
 
 </main>
 <script src="js/site.js" defer></script>
