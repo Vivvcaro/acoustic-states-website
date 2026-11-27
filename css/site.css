@@ -768,3 +768,12 @@ html{scroll-padding-top:76px}
 /* the menu lives outside the frosted bar (so nothing shows through it), fixed just under the menu button */
 #h7 .menu{position:fixed;z-index:16}
 #h7 .menu{animation:none}
+
+/* About: the read-more and get-in-touch links (27 Nov) */
+#h7 .about p.more{margin:4px 0 22px}
+#h7 .about p.reach{margin-top:8px;color:var(--dim)}
+/* About: Get in touch with the socials beside it */
+#h7 .about .touchrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;margin-top:6px}
+#h7 .about .touchrow .social{margin:0}
+#h7 .about a.inl{color:inherit;text-decoration:underline;text-decoration-color:rgba(143,136,214,.6);text-underline-offset:4px}
+#h7 .about a.inl:hover{text-decoration-color:#ff8a5c}
