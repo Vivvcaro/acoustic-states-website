@@ -626,3 +626,7 @@ footer a{color:inherit}
 #h7 .tk:active,#h7 .glassbtn:active{transform:none;box-shadow:none}
 #h7 .tk{font-size:11px;letter-spacing:.18em;padding:6px 0 7px}
 #h7 .tk::after{right:.18em}
+
+/* buttons come alive on hover: the words thicken and deepen (by stroke, so nothing shifts), as the line draws out */
+#h7 .tk,#h7 .glassbtn{transition:color .35s ease,-webkit-text-stroke-width .35s ease,text-shadow .35s ease;-webkit-text-stroke:0 currentColor}
+#h7 .tk:hover,#h7 .glassbtn:hover,#h7 .tk:focus-visible,#h7 .glassbtn:focus-visible{color:#17142b;-webkit-text-stroke:.55px currentColor;text-shadow:0 0 .5px currentColor}
