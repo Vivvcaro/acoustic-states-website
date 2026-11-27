@@ -126,4 +126,59 @@
     var t = document.querySelector('.aboutsec');
     if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
+  /* ---------- testimonies: a deck that spreads under the pointer ----------
+     At rest the cards lie stacked, slightly fanned. Moving the pointer over them fans them out,
+     and the card nearest the pointer lifts. Clicking (or Enter) brings one forward to read;
+     clicking it again, or anywhere else, puts it back. On narrow screens they become a row to swipe. */
+  (function () {
+    var deck = document.querySelector('#h7 .words .quotes');
+    if (!deck) return;
+    var cards = Array.prototype.slice.call(deck.children);
+    deck.classList.add('deck');
+    var hint = document.createElement('p'); hint.className = 'deckhint';
+    hint.textContent = 'Move over the cards to spread them, and choose one to read.';
+    deck.parentNode.appendChild(hint);
+    var spread = false, hover = -1, chosen = -1, n = cards.length, mid = (n - 1) / 2;
+    cards.forEach(function (c, i) { c.tabIndex = 0; c.setAttribute('role', 'button'); c.setAttribute('aria-label', 'Read: ' + c.querySelector('figcaption').textContent.trim()); });
+    var narrow = function () { return innerWidth <= 640; };
+    var lay = function () {
+      if (narrow()) return;
+      var W = deck.clientWidth, cw = cards[0].offsetWidth, room = Math.min(W - cw - 20, 980);
+      cards.forEach(function (c, i) {
+        var k = i - mid, x, y, r, s = 1, o = 1, z = i;
+        if (chosen >= 0) {
+          if (i === chosen) { x = 0; y = -18; r = 0; s = 1.1; z = 50; }
+          else { var j = i < chosen ? i - chosen : i - chosen; x = j * (room / (n - 1)) * 1.08; y = 40 + Math.abs(j) * 10; r = j * 4; s = .9; o = .45; }
+        } else if (spread) {
+          x = k * (room / (n - 1)); y = Math.abs(k) * 22; r = k * 5;
+          if (i === hover) { y -= 30; s = 1.04; z = 40; }
+        } else { x = k * 16; y = Math.abs(k) * 6; r = k * 3.2; }
+        c.style.transform = 'translateX(-50%) translate(' + x + 'px,' + y + 'px) rotate(' + r + 'deg) scale(' + s + ')';
+        c.style.zIndex = z; c.style.opacity = o;
+        c.classList.toggle('lift', i === hover && chosen < 0 && spread);
+        c.classList.toggle('chosen', i === chosen);
+      });
+    };
+    deck.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { spread = true; lay(); } });
+    deck.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse' && chosen < 0) { spread = false; hover = -1; lay(); } });
+    deck.addEventListener('pointermove', function (e) {
+      if (!spread || chosen >= 0) return;
+      // the card whose centre is nearest the pointer lifts
+      var best = -1, bd = 1e9;
+      cards.forEach(function (c, i) { var b = c.getBoundingClientRect(), d = Math.abs(e.clientX - (b.left + b.width / 2)); if (d < bd) { bd = d; best = i; } });
+      if (best !== hover) { hover = best; lay(); }
+    });
+    cards.forEach(function (c, i) {
+      var pick = function () { if (narrow()) return; spread = true; chosen = chosen === i ? -1 : i; hover = -1; lay(); };
+      c.addEventListener('click', function (e) { e.stopPropagation(); if (!spread) { spread = true; hover = i; lay(); return; } pick(); });
+      c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+      c.addEventListener('focus', function () { if (chosen < 0) { spread = true; hover = i; lay(); } });
+    });
+    document.addEventListener('click', function () { if (chosen >= 0 || spread) { chosen = -1; spread = false; hover = -1; lay(); } });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape' && chosen >= 0) { chosen = -1; lay(); } });
+    addEventListener('resize', lay);
+    addEventListener('hashchange', function () { setTimeout(lay, 60); });   // when the page it sits on is shown
+    lay();
+  })();
+
 })();
