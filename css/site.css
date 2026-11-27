@@ -702,3 +702,5 @@ footer a{color:inherit}
 #h7 .staysec .socials a:focus-visible{outline:2px solid #6b5bd0;outline-offset:3px}
 /* the booking band now follows the journey line */
 #h7 .bookband{padding-block:30px 80px}
+/* the pale light sits right behind the words (an older rule's fixed height had pushed it above them) */
+#h7 .statement .herobtn::before{height:auto}
