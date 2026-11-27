@@ -21,7 +21,7 @@ Then visit http://localhost:8080.
 - `index.html`: the page, the pages that open as a square over the site (Methodology, Programmes, Past events, Research, Book a listening session), the Stay close subscribe box and the Get in touch form.
 - `css/site.css`: all the styles. The colours are paper `#f3ede9`, ink `#2a2540`, and glows of violet `#8f88d6` and orange `#ff6a3a`.
 - `js/site.js`: the koi's swim and the hero's colours following it, opening and closing the panels, the form, and the scroll arrow. If the script does not run, the CSS loop (`loop7`) keeps the koi swimming in the hero.
-- `img/`: Viviana's portrait, the event and tile photos, the app image and the Phononaut logo, the lavender arc on dark water (The app tile).
+- `img/`: Viviana's portrait, the event and tile photos, the app image and the Phononaut logo, the snailfish under the name on dark water (The app tile).
 - `favicon.svg`: the journey-line logo.
 
 ## Movement
