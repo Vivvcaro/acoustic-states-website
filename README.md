@@ -30,6 +30,8 @@ Then visit http://localhost:8080.
 - The hero's glows lean softly towards the koi, and a bloom of pink, peach and violet trails behind it.
 - The Research tile's swirl turns, the The app tile's halo breathes, and the ring over the hero turns slowly.
 - In the Methodology panel, the sphere's rays turn about once a minute and its centre breathes.
+- Under "For those feeling...", the journey line from the logo carries a session's seven steps, with the Acoustic State at its peak. A soft light travels it in about 21 seconds, rests at "Integrate it into your life" while a gold glow lingers for about 9 seconds, and begins again.
+- The testimonies rest as a stacked deck; they fan out under the pointer and one can be brought forward to read.
 - The headline words stay still.
 
 ## Still to decide before it goes live
