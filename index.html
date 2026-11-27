@@ -80,7 +80,7 @@
         <path d="M30 41 C40 34 54 34 63 41 C53 47 40 47 30 41Z" fill="#ff6a3a"/>
         <path d="M44 56 C50 53 58 53 64 56 C58 60 50 60 44 56Z" fill="#ff6a3a" opacity=".7"/>
       </svg>
-      <div class="statement"><p class="kick" aria-label="Science-backed"><span aria-hidden="true"><span class="nw">Science-b<span class="lam">V</span>cked</span></span></p><p class="st2">Immersive sound doses designed to evoke <span style="white-space:nowrap">psychedelic-like</span> states, without substances.</p><a class="glassbtn herobtn" href="#" data-open-panel="4">Book a session</a></div>
+      <div class="statement"><p class="kick" aria-label="Science-backed"><span aria-hidden="true"><span class="nw">Science-b<span class="lam">V</span>cked</span></span></p><p class="st2">Immersive sound doses designed to evoke <span style="white-space:nowrap">psychedelic-like</span> states, without substances</p><a class="glassbtn herobtn" href="#" data-open-panel="4">Book a session</a></div>
     </div>
   </div></div>
   <section class="sec gut forthose"><div class="wrap">
@@ -172,6 +172,43 @@
     </div>
   </section>
 
+  <div class="touch" id="quote" hidden>
+    <div class="scrim" data-close-touch></div>
+    <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="quote-h">
+      <div class="g gsoft"></div><div class="grain"></div>
+      <form class="cform vellum" id="qform" novalidate>
+        <button type="button" class="x" data-close-touch aria-label="Close">×</button>
+        <div class="chead"><svg viewBox="0 0 100 100" width="40" height="40" aria-hidden="true"><use href="#J4g"/></svg><h2 class="cap av" id="quote-h" aria-label="Request a quote"><span aria-hidden="true"><span class="nw">Request</span> <span class="nw"><span class="lam">V</span></span> <span class="nw">quote</span></span></h2></div>
+        <p class="booking" id="qkind"></p>
+        <div class="two">
+          <label for="q-date">Date<input id="q-date" name="date" type="date"></label>
+          <label for="q-people">Number of people<input id="q-people" name="people" type="number" min="1" inputmode="numeric"></label>
+        </div>
+        <label for="q-theme">Theme<input id="q-theme" name="theme"></label>
+        <fieldset><legend>Dose</legend>
+          <div class="chips">
+            <label><input type="radio" name="dose" value="Microdose"><span>Microdose</span></label>
+            <label><input type="radio" name="dose" value="Medium dose"><span>Medium dose</span></label>
+            <label><input type="radio" name="dose" value="Macrodose"><span>Macrodose</span></label>
+            <label><input type="radio" name="dose" value="Not sure yet" checked><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <div class="two">
+          <label for="q-venue">Venue<input id="q-venue" name="venue"></label>
+          <label for="q-city">City<input id="q-city" name="city" autocomplete="address-level2"></label>
+        </div>
+        <fieldset id="q-soundset"><legend>Does the venue have a sound system?</legend>
+          <div class="chips">
+            <label><input type="radio" name="sound" value="Yes"><span>Yes</span></label>
+            <label><input type="radio" name="sound" value="No"><span>No</span></label>
+          </div>
+        </fieldset>
+        <label for="q-email">Email<input id="q-email" name="email" type="email" autocomplete="email"></label>
+        <label for="q-msg">Message<textarea id="q-msg" name="message" rows="4"></textarea></label>
+        <div class="send"><button class="glassbtn dark" type="submit">Send</button><span class="sent" id="qsent" role="status"></span></div>
+      </form>
+    </div>
+  </div>
   <div class="touch" id="touch" hidden>
     <div class="scrim" data-close-touch></div>
     <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="touch-h">
@@ -327,7 +364,7 @@
         </svg>
         <h3 class="cap av" aria-label="Public group sessions"><span aria-hidden="true"><span class="nw">Public</span> <span class="nw">group</span> <span class="nw">sessions</span></span></h3>
         <p>Join a live listening session with others, at a festival or venue.</p>
-        <button type="button" class="glassbtn" data-open-touch data-book="Public group session">Book</button>
+        <button type="button" class="glassbtn" data-open-quote="public">Request a quote</button>
       </article>
       <article class="way">
         <svg class="orb" viewBox="0 0 200 200" aria-hidden="true">
@@ -343,7 +380,7 @@
         </svg>
         <h3 class="cap av" aria-label="Private group sessions"><span aria-hidden="true"><span class="nw">Priv<span class="lam">V</span>te</span> <span class="nw">group</span> <span class="nw">sessions</span></span></h3>
         <p>A journey for your group, team or community, in a space you choose.</p>
-        <button type="button" class="glassbtn" data-open-touch data-book="Private group session">Book</button>
+        <button type="button" class="glassbtn" data-open-quote="private">Request a quote</button>
       </article>
       <article class="way">
         <svg class="orb" viewBox="0 0 200 200" aria-hidden="true">
@@ -359,19 +396,20 @@
         </svg>
         <h3 class="cap av" aria-label="Individual private sessions"><span aria-hidden="true"><span class="nw">Individu<span class="lam">V</span>l</span> <span class="nw">priv<span class="lam">V</span>te</span> <span class="nw">sessions</span></span></h3>
         <p>One to one, at your own pace.</p>
-        <button type="button" class="glassbtn" data-open-touch data-book="Individual private session">Book</button>
+        <button type="button" class="glassbtn" data-open-touch data-book="15-minute conversation">Book a 15-minute conversation</button>
       </article>
     </div>
         <div class="card vellum price">
           <h3>Prices</h3>
-          <p>Prices depend on the number of people and the dose.</p>
-          <h4 class="lbl">Individual private sessions</h4>
+          <p>Group sessions are quoted individually, depending on the number of people and the dose.</p>
+          <h4 class="lbl">Individual private sessions, from</h4>
           <ul class="tiers">
             <li><span>Microdose</span><b>£200</b></li>
             <li><span>Medium dose</span><b>£280</b></li>
             <li><span>Macrodose</span><b>£400</b></li>
           </ul>
-          <p>Every session uses a state-of-the-art surround sound system.</p>
+          <p>Prices are for in-person sessions and include a surround sound system.</p>
+          <p class="pbtn"><button type="button" class="glassbtn" data-open-touch data-book="15-minute conversation and a personalised quote">Book a 15-minute conversation and get a personalised quote</button></p>
         </div>
         <div class="card vellum glowcard">
           <h3>Tailored private sessions</h3>

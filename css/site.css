@@ -777,3 +777,11 @@ html{scroll-padding-top:76px}
 #h7 .about .touchrow .social{margin:0}
 #h7 .about a.inl{color:inherit;text-decoration:underline;text-decoration-color:rgba(143,136,214,.6);text-underline-offset:4px}
 #h7 .about a.inl:hover{text-decoration-color:#ff8a5c}
+
+/* booking: the quote form and the prices card's button (27 Nov) */
+#h7 .cform fieldset[hidden]{display:none}
+#h7 .cform input[type=date]{min-height:44px}
+#h7 .price p.pbtn{margin-top:14px}
+#h7 .price p.pbtn .glassbtn{text-align:left;line-height:1.6}
+/* the hero words: no tight halo, which made the light lettering read as bold */
+#h7 .st2{text-shadow:0 0 28px rgba(255,248,244,.7);font-weight:300}

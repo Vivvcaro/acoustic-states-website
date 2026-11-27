@@ -109,6 +109,24 @@
       show(touch, '#c-name');
     });
   });
+  // Request a quote (group sessions): the venue's sound system question is for public sessions only
+  var quote = document.getElementById('quote');
+  document.querySelectorAll('[data-open-quote]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!openEl) opener = b;
+      var pub = b.getAttribute('data-open-quote') === 'public';
+      document.getElementById('qkind').textContent = pub ? 'Public group session' : 'Private group session';
+      document.getElementById('q-soundset').hidden = !pub;
+      document.getElementById('qsent').textContent = '';
+      show(quote, '#q-date');
+    });
+  });
+  var qform = document.getElementById('qform');
+  if (qform) qform.addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('qsent').textContent = 'Thank you. This form is not connected yet, so nothing was sent.';
+  });
   document.querySelectorAll('[data-close-panel],[data-close-touch]').forEach(function (b) { b.addEventListener('click', hide); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
 
