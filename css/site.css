@@ -457,3 +457,5 @@ footer a{color:inherit}
   #h7 .pond .v2{right:4%;bottom:6%;width:44%;height:40%}
   #h7 .pond .statement{padding:0 4% 4%}
 }
+
+#h7 .statement .herobtn{pointer-events:auto;margin-top:22px;font-size:12px;padding:14px 30px}
