@@ -706,3 +706,23 @@ footer a{color:inherit}
 #h7 .statement .herobtn::before{height:auto}
 /* the pages' titles are now whole sentences, so they are set smaller, with more air between lines */
 #h7 .ptitle{font-size:clamp(19px,2.3vw,27px);letter-spacing:.22em;line-height:1.45;text-wrap:balance}
+
+/* ---- the top bar stays in view across the whole site (27 Nov) ----
+   a thin band of frosted paper; on phones the links sit in one row under the name and slide sideways */
+#h7 .nav{position:sticky;top:0;z-index:15;background:rgba(243,237,233,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border-bottom:1px solid rgba(42,37,64,.06);padding-top:env(safe-area-inset-top,0px)}
+#h7 .nav .wrap{padding-block:12px}
+@media (max-width:820px){
+  #h7 .nav .wrap{flex-direction:column;align-items:stretch;gap:8px;padding-block:10px 8px}
+  #h7 .nav .links{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:18px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  #h7 .nav .links::-webkit-scrollbar{display:none}
+  #h7 .nav .links a{white-space:nowrap;font-size:10.5px}
+  #h7 .nav .mark svg{width:30px;height:30px}
+}
+/* the page's own overflow setting stops a sticky bar, so the bar is fixed and the page starts below it */
+#h7 .nav{position:fixed;left:0;right:0;top:0}
+#h7{padding-top:calc(62px + env(safe-area-inset-top,0px))}
+@media (max-width:820px){#h7{padding-top:calc(84px + env(safe-area-inset-top,0px))}}
+@media (max-width:820px){#h7{padding-top:calc(76px + env(safe-area-inset-top,0px))}}
+/* jumps to a section (the scroll arrow, Subscribe) stop below the bar */
+html{scroll-padding-top:84px}
