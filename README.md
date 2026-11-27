@@ -4,9 +4,11 @@ The website for Acoustic States, Viviana Caro's live and private listening sessi
 
 The design is "Glow and vellum", chosen by Viviana in November 2026. Its frames are in the Figma file "Phantom Fish – Phononaut – Websites", page "Exploration · Acoustic States site", in the row starting "H · Glow and vellum · Desktop". The note beside them describes how the koi moves.
 
-## Run it
+## See it
 
-Open `index.html` in a browser, or serve the folder:
+Live at **https://vivvcaro.github.io/acoustic-states-website/** (GitHub Pages, published from `main`; every push updates it within a minute or two). It does not replace acousticstates.com.
+
+To try changes on your Mac first, open `index.html` in a browser, or serve the folder:
 
 ```bash
 python3 -m http.server 8080
@@ -34,7 +36,7 @@ Then visit http://localhost:8080.
 
 - Where Get in touch messages go. The form shows a "not connected yet" note for now.
 - The Instagram, LinkedIn and Substack addresses, the ticket links for each performance, and the "Explore the app" link.
-- Hosting, and when it replaces the current acousticstates.com.
+- When, and whether, it replaces the current acousticstates.com (that needs the domain pointed at GitHub Pages).
 - Fonts come from Google Fonts. Self-hosting them would avoid sending visitors' addresses to Google.
 
 The listener quotes are the ones published on acousticstates.com. The prices (Microdose £200, Medium dose £280, Macrodose £400 for individual private sessions) were confirmed by Viviana on 27 November 2026.
