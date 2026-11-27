@@ -24,7 +24,7 @@ Then visit http://localhost:8080.
 
 ## Movement
 
-- The koi swims a continuous loop around the hero (about 34 seconds), turning without flipping. Its tail beats and its fins flutter.
+- The koi wanders the hero on a smooth path that never quite repeats, always facing where it goes. It swims like a koi: a few quick tail beats, then a glide, about every six and a half seconds. It looks slightly smaller higher up, as if deeper in the water. If the script does not run, a CSS loop keeps it swimming.
 - The hero's glows lean softly towards the koi, and a bloom of pink, peach and violet trails behind it.
 - The Research tile's swirl turns, the The app tile's halo breathes, and the ring over the hero turns slowly.
 - In the Methodology panel, the sphere's rays turn about once a minute and its centre breathes.

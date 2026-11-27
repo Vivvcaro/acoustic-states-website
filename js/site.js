@@ -6,22 +6,50 @@
 (function () {
   'use strict';
 
-  /* ---------- the hero: colours follow the koi ----------
-     The koi swims by CSS (a slow loop, about 34 s). Each frame this reads where it is,
-     lets the glows lean a little towards it, and moves a soft bloom that lags behind it. */
+  /* ---------- the hero: the koi swims, and the colours follow it ----------
+     The koi wanders on a smooth path that never quite repeats (two slow waves crossing),
+     always facing where it goes. It swims like a koi: a few quick tail beats, then a glide.
+     It looks a little smaller when it is further up, as if deeper in the water.
+     The glows lean towards it, and a soft bloom of colour trails behind it.
+     (Without this script, the CSS loop in site.css keeps it swimming.) */
   var koi = document.getElementById('koi7');
   var wake = document.getElementById('wake7');
   if (koi && wake) {
     var pond = koi.parentElement;
+    var tail = document.getElementById('k7tail'), finL = document.getElementById('k7finL'), finR = document.getElementById('k7finR');
     var glows = Array.prototype.filter.call(pond.children, function (n) { return n.classList.contains('g'); });
+    koi.style.animation = 'none'; koi.style.left = '0'; koi.style.top = '0';
+    [tail, finL, finR].forEach(function (n) { if (n) n.style.animation = 'none'; });
+    var path = function (u, W, H) {                                  // where the koi is at path position u
+      return [W * (0.5 + 0.36 * Math.sin(u) + 0.06 * Math.sin(2.3 * u + 1.0)),
+              H * (0.56 + 0.2 * Math.sin(1.7 * u + 0.6) + 0.05 * Math.sin(3.1 * u))];
+    };
+    var u = 2.2, clock = 0, beat = 0, heading = null;
     var last = null, px = null, py = null, wx = null, wy = null, wo = 0, gx = 0, gy = 0;
     var frame = function (now) {
       requestAnimationFrame(frame);
       var dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016; last = now;
       var pr = pond.getBoundingClientRect();
       if (pr.bottom < 0 || pr.top > innerHeight) return;            // off screen: rest
-      var kr = koi.getBoundingClientRect();
-      var x = kr.left - pr.left + kr.width / 2, y = kr.top - pr.top + kr.height / 2;
+      var W = pond.clientWidth, H = pond.clientHeight, S = koi.getBoundingClientRect().width || 200;
+      // swim, then glide: the push comes about every 6.5 seconds and eases off
+      clock += dt;
+      var push = Math.pow(Math.max(0, Math.sin(clock * 2 * Math.PI / 6.5)), 2);
+      u += dt * (0.1 + 0.16 * push);
+      var p = path(u, W, H), q = path(u + 0.002, W, H);
+      var x = p[0], y = p[1];
+      // face along the path, turning smoothly (the drawing's head points left)
+      var target = Math.atan2(q[1] - y, q[0] - x) + Math.PI;
+      if (heading === null) heading = target;
+      var d = Math.atan2(Math.sin(target - heading), Math.cos(target - heading));
+      heading += d * Math.min(1, dt * 4);
+      beat += dt * (2.2 + 7 * push);                                 // the tail beats fast in the push, slowly in the glide
+      var sway = Math.sin(beat) * (2 + 4 * push);
+      var depth = 0.9 + 0.14 * (y / H);                              // smaller further up, as if deeper
+      koi.style.transform = 'translate(' + (x - S / 2) + 'px,' + (y - S / 2) + 'px) rotate(' + (heading * 180 / Math.PI + sway).toFixed(2) + 'deg) scale(' + depth.toFixed(3) + ')';
+      if (tail) tail.style.transform = 'rotate(' + (Math.sin(beat - 0.6) * (10 + 16 * push)).toFixed(2) + 'deg)';
+      if (finL) finL.style.transform = 'rotate(' + (Math.sin(beat * 0.7) * (8 + 10 * (1 - push))).toFixed(2) + 'deg)';
+      if (finR) finR.style.transform = 'rotate(' + (-Math.sin(beat * 0.7 + 0.5) * (8 + 10 * (1 - push))).toFixed(2) + 'deg)';
       var sp = px === null ? 0 : Math.hypot(x - px, y - py) / dt; px = x; py = y;
       // the bloom follows slowly, so the colour seems to spread where the fish has been
       var k = 1 - Math.exp(-dt * 1.2);
