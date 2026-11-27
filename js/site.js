@@ -111,6 +111,15 @@
   });
   document.querySelectorAll('[data-close-panel],[data-close-touch]').forEach(function (b) { b.addEventListener('click', hide); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  // Subscribe in the Programmes page closes it and glides to Stay close, ready for an email
+  document.querySelectorAll('[data-go-subscribe]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); opener = null; hide();
+      var sec = document.querySelector('#h7 .staysec'), em = document.getElementById('s-email');
+      if (sec) sec.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+      if (em) setTimeout(function () { em.focus({ preventScroll: true }); }, 600);
+    });
+  });
 
   /* ---------- the form ----------
      Not connected yet: where messages go is still to be decided. */
@@ -118,6 +127,12 @@
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
     document.getElementById('csent').textContent = 'Thank you. This form is not connected yet, so nothing was sent.';
+  });
+  // Subscribe: not connected yet either; the mailing list is still to be chosen
+  var sub = document.getElementById('subform');
+  if (sub) sub.addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('subsent').textContent = 'Thank you. Subscribing is not connected yet, so nothing was sent.';
   });
 
   /* ---------- the arrow under Upcoming performances ---------- */

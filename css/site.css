@@ -682,3 +682,23 @@ footer a{color:inherit}
   background:radial-gradient(closest-side,rgba(255,252,250,.78),rgba(255,236,232,.5) 50%,rgba(255,236,232,0));filter:blur(4px)}
 #h7 .sp>.grain{display:none}
 @media (max-width:480px){#h7 .tri .tricenter{top:63%;font-size:12px;letter-spacing:.2em}#h7 .tri .tricenter small{font-size:8px}}
+
+/* ---- Stay close: subscribe and follow, after the closing words (27 Nov) ---- */
+#h7 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#h7 .staysec{text-align:center;padding-block:70px 90px;position:relative}
+#h7 .staysec h2{font-size:clamp(20px,2.6vw,30px);letter-spacing:.3em;margin:0 0 12px;color:#2a2540}
+#h7 .staysec>.wrap>p{margin:0 auto 26px;font-size:18px;color:var(--dim);max-width:36ch}
+#h7 .subform{display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap;max-width:520px;margin:0 auto}
+#h7 .subform input{flex:1 1 240px;min-width:0;font:inherit;font-family:var(--body);font-size:18px;color:#2a2540;padding:10px 2px;
+  background:transparent;border:0;border-bottom:1px solid rgba(42,37,64,.28);border-radius:0;outline:none;transition:border-color .3s ease}
+#h7 .subform input::placeholder{color:#8a8499}
+#h7 .subform input:focus{border-bottom-color:#8f88d6}
+#h7 .staysec .subsent{min-height:1.4em;margin:14px 0 0;font-size:15px;color:var(--dim)}
+#h7 .staysec .socials{display:flex;justify-content:center;gap:14px;margin-top:18px}
+#h7 .staysec .socials a{width:44px;height:44px;border-radius:999px;display:grid;place-items:center;color:#2a2540;
+  background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(236,228,252,.18));backdrop-filter:blur(12px) saturate(1.6);-webkit-backdrop-filter:blur(12px) saturate(1.6);
+  border:1px solid rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 6px 18px -10px rgba(80,60,150,.35);transition:background .3s ease,transform .3s ease}
+#h7 .staysec .socials a:hover{background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(236,228,252,.3));transform:translateY(-2px)}
+#h7 .staysec .socials a:focus-visible{outline:2px solid #6b5bd0;outline-offset:3px}
+/* the booking band now follows the journey line */
+#h7 .bookband{padding-block:30px 80px}
