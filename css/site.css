@@ -611,3 +611,18 @@ footer a{color:inherit}
   @keyframes tileDance{0%{translate:-5% 3%;scale:1}50%{translate:4% -4%;scale:1.08}100%{translate:-2% 5%;scale:.96}}
 }
 @media (max-width:640px){#h7 .tiles{grid-template-columns:1fr}}
+
+/* ---- buttons: no shape, chosen by Viviana (27 Nov) ----
+   just the words in the spaced capitals, with a fine lilac-to-peach line under them
+   that draws itself out when pointed at */
+#h7 .tk,#h7 .glassbtn,#h7 .glassbtn.dark{position:relative;display:inline-block;padding:8px 0 9px;border:0;border-radius:0;
+  background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;animation:none;cursor:pointer;
+  font-family:var(--display);font-weight:400;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:#2a2540;text-decoration:none}
+#h7 .tk::before,#h7 .glassbtn::before{content:none}
+#h7 .tk::after,#h7 .glassbtn::after{content:"";position:absolute;left:0;right:.24em;bottom:2px;top:auto;height:1px;border-radius:0;
+  background:linear-gradient(90deg,#8f88d6,#ff8a5c);transform-origin:left;transform:scaleX(.35);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+#h7 .tk:hover,#h7 .glassbtn:hover,#h7 .tk:focus-visible,#h7 .glassbtn:focus-visible{background:none;box-shadow:none;transform:none}
+#h7 .tk:hover::after,#h7 .glassbtn:hover::after,#h7 .tk:focus-visible::after,#h7 .glassbtn:focus-visible::after{transform:scaleX(1)}
+#h7 .tk:active,#h7 .glassbtn:active{transform:none;box-shadow:none}
+#h7 .tk{font-size:11px;letter-spacing:.18em;padding:6px 0 7px}
+#h7 .tk::after{right:.18em}
