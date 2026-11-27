@@ -216,7 +216,15 @@
         var x = q[0], y = q[1];
         if (i === 4) {   // the peak: the Acoustic State
           el('circle', { cx: x, cy: y, r: 30, fill: 'url(#jGoal)', 'class': 'pulse' }, svg); el('circle', { cx: x, cy: y, r: 6.5, fill: '#2a2540' }, svg);
-          peakLabel.style.left = x + 'px'; peakLabel.style.top = (y - 22) + 'px'; return; }
+          peakLabel.style.left = x + 'px'; peakLabel.style.top = (y - 22) + 'px';
+          // a small glow as the travelling light passes over the peak
+          var Lp = path.getTotalLength(), atp = 0, bp = 1e9;
+          for (var lp = 0; lp <= Lp; lp += 2) { var qp = path.getPointAtLength(lp), dp = (qp.x - x) * (qp.x - x) + (qp.y - y) * (qp.y - y); if (dp < bp) { bp = dp; atp = lp; } }
+          var tp0 = ARRIVE * atp / Lp, w0 = Math.max(0, tp0 - .025), w1 = tp0 + .005, w2 = Math.min(ARRIVE - .02, tp0 + .06);
+          var pg = el('circle', { cx: x, cy: y, r: 8, fill: 'url(#jGoal)', opacity: 0 }, svg);
+          el('animate', { attributeName: 'r', values: '8;8;38;46;8', keyTimes: '0;' + w0 + ';' + w1 + ';' + w2 + ';1', dur: DUR + 's', repeatCount: 'indefinite' }, pg);
+          el('animate', { attributeName: 'opacity', values: '0;0;.85;0;0', keyTimes: '0;' + w0 + ';' + w1 + ';' + w2 + ';1', dur: DUR + 's', repeatCount: 'indefinite' }, pg);
+          return; }
         if (i === 3) {   // the climb: its words set along the line itself
           dot(x, y, 5.7, '#8a6fc8'); var L = path.getTotalLength(), at = 0, best = 1e9;
           for (var l = 0; l <= L; l += 2) { var pp = path.getPointAtLength(l), dd = (pp.x - x) * (pp.x - x) + (pp.y - y) * (pp.y - y); if (dd < best) { best = dd; at = l; } }
