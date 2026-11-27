@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="gvLine" gradientUnits="userSpaceOnUse" x1="10" y1="80" x2="72" y2="32"><stop offset="0" stop-color="#8f88d6"/><stop offset=".55" stop-color="#a796e6"/><stop offset=".82" stop-color="#ff9fbf"/><stop offset="1" stop-color="#ff8a5c"/></linearGradient><radialGradient id="gvHalo"><stop offset="0" stop-color="#ff6a3a" stop-opacity=".9"/><stop offset=".32" stop-color="#ff8fb8" stop-opacity=".7"/><stop offset=".68" stop-color="#c7a6f2" stop-opacity=".4"/><stop offset="1" stop-color="#c7a6f2" stop-opacity="0"/></radialGradient></defs>
+      <circle cx="74" cy="28" r="19" fill="url(#gvHalo)"/>
+      <path d="M4 60 H20 C30 60 34 86 45 86 C56 86 62 58 71 34" fill="none" stroke="url(#gvLine)" stroke-width="3.4" stroke-linecap="round"/>
+      <circle cx="74" cy="28" r="5.5" fill="#2a2540"/>
+    </svg>
