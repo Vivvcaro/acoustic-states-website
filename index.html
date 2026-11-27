@@ -74,7 +74,7 @@
     </div>
   </section>
   
-  <section class="sec gut" style="padding-top:10px"><div class="wrap"><div class="tiles"><a class="tile" href="#" data-open-panel="0" style="color:inherit"><div class="g g1"></div><div class="vellum vel"></div><div class="grain"></div><span class="cap av" aria-label="Methodology"><span aria-hidden="true"><span class="nw">Methodology</span></span></span></a><a class="tile" href="#" data-open-panel="1" style="color:inherit"><div class="g g2"></div><div class="vellum vel"></div><div class="grain"></div><span class="cap av" aria-label="Past events"><span aria-hidden="true"><span class="nw">P<span class="lam">V</span>st</span> <span class="nw">events</span></span></span></a><a class="tile" href="#" data-open-panel="2" style="color:inherit"><div class="g g4"></div><div class="vellum vel"></div><div class="grain"></div><span class="cap av" aria-label="Research"><span aria-hidden="true"><span class="nw">Rese<span class="lam">V</span>rch</span></span></span></a><a class="tile" href="#" data-open-panel="3" style="color:inherit"><div class="g g5"></div><div class="vellum vel"></div><div class="grain"></div><span class="cap av" aria-label="The app"><span aria-hidden="true"><span class="nw">The</span> <span class="nw"><span class="lam">V</span>pp</span></span></span></a></div></div></section>
+  <section class="sec gut" style="padding-top:10px"><div class="wrap"><div class="tiles"><a class="tile" href="#" data-open-panel="0" style="color:inherit"><div class="g g1"></div><div class="vellum vel"></div><div class="grain"></div><span class="cap av" aria-label="Methodology"><span aria-hidden="true"><span class="nw">Methodology</span></span></span></a><a class="tile light" href="#" data-open-panel="1" style="color:inherit"><img class="timg" src="img/past-events.jpg" alt="" loading="lazy"><div class="tint"></div><div class="grain"></div><span class="cap av" aria-label="Past events"><span aria-hidden="true"><span class="nw">P<span class="lam">V</span>st</span> <span class="nw">events</span></span></span></a><a class="tile light" href="#" data-open-panel="2" style="color:inherit"><img class="timg" src="img/research.jpg" alt="" loading="lazy"><div class="tint"></div><div class="grain"></div><span class="cap av" aria-label="Research"><span aria-hidden="true"><span class="nw">Rese<span class="lam">V</span>rch</span></span></span></a><a class="tile" href="#" data-open-panel="3" style="color:inherit"><div class="g g5"></div><div class="grain"></div><img class="appicon" src="img/phononaut-icon.png" alt="The Phononaut app icon" loading="lazy"><span class="cap av" aria-label="The app"><span aria-hidden="true"><span class="nw">The</span> <span class="nw"><span class="lam">V</span>pp</span></span></span></a></div></div></section>
 
 
   <section class="sec gut words" aria-labelledby="words-h"><div class="wrap">
@@ -186,14 +186,23 @@
     <p>During live performances, Viviana guides you through different ways of listening, bringing together:</p>
     <div class="tri">
       <div class="tl top"><span class="cap av" aria-label="Imagination"><span aria-hidden="true"><span class="nw">Im<span class="lam">V</span>gin<span class="lam">V</span>tion</span></span></span><small>Let sound evoke images, memories and inner worlds.</small></div>
-      <svg viewBox="0 0 400 300" aria-hidden="true">
-        <defs><radialGradient id="triGlow" cx="50%" cy="62%" r="55%"><stop offset="0" stop-color="#ff7fb0" stop-opacity=".55"/><stop offset=".5" stop-color="#c7a6f2" stop-opacity=".45"/><stop offset="1" stop-color="#f3ede9" stop-opacity="0"/></radialGradient></defs>
-        <path d="M200 26 L58 262 L342 262Z" fill="url(#triGlow)" style="filter:url(#orbSoft)"/>
-        <path d="M200 26 L58 262 L342 262Z" fill="none" stroke="#7d72b0" stroke-opacity=".55" stroke-width=".8"/>
-        <circle cx="200" cy="26" r="4" fill="#8a6fc8" fill-opacity=".7"/><circle cx="58" cy="262" r="4" fill="#8a6fc8" fill-opacity=".7"/><circle cx="342" cy="262" r="4" fill="#8a6fc8" fill-opacity=".7"/>
-        <text x="200" y="180" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15" fill="#4d4775">Acoustic State</text>
-        <text x="200" y="199" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15" fill="#4d4775">of Consciousness</text>
-      </svg>
+      <div class="trisvg"><svg viewBox="0 0 400 300" aria-hidden="true">
+        <defs>
+          <linearGradient id="triLine" gradientUnits="userSpaceOnUse" x1="58" y1="262" x2="342" y2="262"><stop offset="0" stop-color="#8f88d6"/><stop offset=".45" stop-color="#ff9fbf"/><stop offset=".7" stop-color="#ff8a5c"/><stop offset="1" stop-color="#e9a83c"/></linearGradient>
+          <radialGradient id="triGoal"><stop offset="0" stop-color="#ff6a3a" stop-opacity=".9"/><stop offset=".35" stop-color="#ff8fb8" stop-opacity=".6"/><stop offset=".7" stop-color="#c7a6f2" stop-opacity=".3"/><stop offset="1" stop-color="#c7a6f2" stop-opacity="0"/></radialGradient>
+          <radialGradient id="triDot"><stop offset="0" stop-color="#8f7be0" stop-opacity=".85"/><stop offset="1" stop-color="#8f7be0" stop-opacity="0"/></radialGradient>
+          <radialGradient id="triPeach"><stop offset="0" stop-color="#ff9a76" stop-opacity=".85"/><stop offset="1" stop-color="#ff9a76" stop-opacity="0"/></radialGradient>
+          <radialGradient id="triGold"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#f2b34a" stop-opacity="0"/></radialGradient>
+          <radialGradient id="triWash" cx="50%" cy="62%" r="55%"><stop offset="0" stop-color="#ff9fbf" stop-opacity=".22"/><stop offset=".6" stop-color="#c7a6f2" stop-opacity=".16"/><stop offset="1" stop-color="#c7a6f2" stop-opacity="0"/></radialGradient>
+        </defs>
+        <path d="M200 26 L342 262 L58 262Z" fill="url(#triWash)"/>
+        <path id="triPath" d="M200 26 L342 262 L58 262Z" fill="none" stroke="url(#triLine)" stroke-width="2.2" stroke-linejoin="round"/>
+        <circle r="13" fill="url(#triDot)"><animateMotion dur="14s" repeatCount="indefinite" calcMode="paced"><mpath href="#triPath"/></animateMotion></circle>
+        <circle cx="200" cy="26" r="16" fill="url(#triDot)"/><circle cx="200" cy="26" r="4.5" fill="#8a6fc8"/>
+        <circle cx="58" cy="262" r="16" fill="url(#triPeach)"/><circle cx="58" cy="262" r="4.5" fill="#e0805e"/>
+        <circle cx="342" cy="262" r="16" fill="url(#triGold)"/><circle cx="342" cy="262" r="4.5" fill="#d98a2b"/>
+        <circle class="pulse" cx="200" cy="182" r="40" fill="url(#triGoal)"/><circle cx="200" cy="182" r="6" fill="#2a2540"/>
+      </svg><p class="tricenter" aria-hidden="true"><span class="nw"><span class="lam">V</span>coustic</span> <span class="nw">St<span class="lam">V</span>te</span><small>of consciousness</small></p></div>
       <div class="tl bl"><span class="cap av" aria-label="Attention"><span aria-hidden="true"><span class="nw"><span class="lam">V</span>ttention</span></span></span><small>Notice the music, your body and what unfolds within you.</small></div>
       <div class="tl br"><span class="cap av" aria-label="Intention"><span aria-hidden="true"><span class="nw">Intention</span></span></span><small>Choose what you’d like to explore, without forcing an outcome.</small></div>
     </div>
