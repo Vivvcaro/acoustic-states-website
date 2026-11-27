@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/site.css?v=20261127b">
+<link rel="stylesheet" href="css/site.css?v=20261127c">
 </head>
 <body id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -160,6 +160,8 @@
       <h2 class="cap av" id="st-h" aria-label="Stay in the loop"><span aria-hidden="true"><span class="nw">St<span class="lam">V</span>y</span> <span class="nw">in</span> <span class="nw">the</span> <span class="nw">loop</span></span></h2>
       <p>Subscribe and follow us for upcoming events, new programmes and research.</p>
       <form class="subform" id="subform" novalidate>
+        <input type="hidden" name="_subject" value="New Stay in the loop signup">
+        <input type="hidden" name="source" value="Stay in the loop">
         <label class="sr" for="s-email">Email</label>
         <input id="s-email" name="email" type="email" autocomplete="email" placeholder="Your email" required>
         <button class="glassbtn" type="submit">Subscribe</button>
@@ -177,9 +179,12 @@
     <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="quote-h">
       <div class="g gsoft"></div><div class="grain"></div>
       <form class="cform vellum" id="qform" novalidate>
+        <input type="hidden" name="_subject" value="New quote request from the Acoustic States website">
+        <input type="hidden" name="source" value="Request a quote">
         <button type="button" class="x" data-close-touch aria-label="Close">×</button>
         <div class="chead"><svg viewBox="0 0 100 100" width="40" height="40" aria-hidden="true"><use href="#J4g"/></svg><h2 class="cap av" id="quote-h" aria-label="Request a quote"><span aria-hidden="true"><span class="nw">Request</span> <span class="nw"><span class="lam">V</span></span> <span class="nw">quote</span></span></h2></div>
         <p class="booking" id="qkind"></p>
+        <input type="hidden" name="session" id="q-session">
         <div class="two">
           <label for="q-date">Date<input id="q-date" name="date" type="date"></label>
           <label for="q-people">Number of people<input id="q-people" name="people" type="number" min="1" inputmode="numeric"></label>
@@ -214,6 +219,8 @@
     <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="priv-h">
       <div class="g gsoft"></div><div class="grain"></div>
       <form class="cform vellum" id="pform" novalidate>
+        <input type="hidden" name="_subject" value="New private session enquiry from the Acoustic States website">
+        <input type="hidden" name="source" value="Book a private session">
         <button type="button" class="x" data-close-touch aria-label="Close">×</button>
         <div class="chead"><svg viewBox="0 0 100 100" width="40" height="40" aria-hidden="true"><use href="#J4g"/></svg><h2 class="cap av" id="priv-h" aria-label="Book a private session"><span aria-hidden="true"><span class="nw">Book</span> <span class="nw"><span class="lam">V</span></span> <span class="nw">priv<span class="lam">V</span>te</span> <span class="nw">session</span></span></h2></div>
         <p class="lead">One to one, at your own pace. Book a 15-minute conversation to talk about your intention and get a personalised quote.</p>
@@ -248,9 +255,12 @@
     <div class="tpanel" role="dialog" aria-modal="true" aria-labelledby="touch-h">
       <div class="g gsoft"></div><div class="grain"></div>
       <form class="cform vellum" id="cform" novalidate>
+        <input type="hidden" name="_subject" value="New message from the Acoustic States website">
+        <input type="hidden" name="source" value="Get in touch">
         <button type="button" class="x" data-close-touch aria-label="Close">×</button>
         <div class="chead"><svg viewBox="0 0 100 100" width="40" height="40"  aria-hidden="true"><use href="#J4g"/></svg><h2 class="cap av" id="touch-h" aria-label="Get in touch"><span aria-hidden="true"><span class="nw">Get</span> <span class="nw">in</span> <span class="nw">touch</span></span></h2></div>
         <p class="booking" id="cbook" hidden></p>
+        <input type="hidden" name="booking" id="c-booking">
         <p class="lead">Book a listening session, talk about research, or say hello.</p>
         <div class="two">
           <label for="c-name">Name<input id="c-name" name="name" autocomplete="name"></label>
@@ -258,10 +268,10 @@
         </div>
         <fieldset><legend>I'd like to</legend>
           <div class="chips">
-            <label><input type="radio" name="about" id="c-a1" checked><span>Book a session</span></label>
-            <label><input type="radio" name="about" id="c-a2"><span>Research</span></label>
-            <label><input type="radio" name="about" id="c-a3"><span>Press</span></label>
-            <label><input type="radio" name="about" id="c-a4"><span>Something else</span></label>
+            <label><input type="radio" name="about" id="c-a1" value="Book a session" checked><span>Book a session</span></label>
+            <label><input type="radio" name="about" id="c-a2" value="Research"><span>Research</span></label>
+            <label><input type="radio" name="about" id="c-a3" value="Press"><span>Press</span></label>
+            <label><input type="radio" name="about" id="c-a4" value="Something else"><span>Something else</span></label>
           </div>
         </fieldset>
         <label for="c-msg">Message<textarea id="c-msg" name="message" rows="4"></textarea></label>
@@ -444,6 +454,6 @@
   </div></footer>
 
 </main>
-<script src="js/site.js?v=20261127b" defer></script>
+<script src="js/site.js?v=20261127c" defer></script>
 </body>
 </html>

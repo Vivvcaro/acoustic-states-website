@@ -112,7 +112,7 @@
       e.preventDefault();
       if (!openEl) opener = b;
       var kind = b.getAttribute('data-book');
-      booking.hidden = !kind; booking.textContent = kind ? 'Booking: ' + kind : '';
+      booking.hidden = !kind; booking.textContent = kind ? 'Booking: ' + kind : ''; document.getElementById('c-booking').value = kind || '';
       if (kind) document.getElementById('c-a1').checked = true;
       show(touch, '#c-name');
     });
@@ -134,11 +134,6 @@
     if (url) { cal.href = url; cal.target = '_blank'; cal.rel = 'noopener'; }
     else cal.addEventListener('click', function (e) { e.preventDefault(); var n = document.getElementById('p-name'); n.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { n.focus({ preventScroll: true }); }, 400); });
   }
-  var pform = document.getElementById('pform');
-  if (pform) pform.addEventListener('submit', function (e) {
-    e.preventDefault();
-    document.getElementById('psent').textContent = 'Thank you. This form is not connected yet, so nothing was sent.';
-  });
   // Request a quote (group sessions): the venue's sound system question is for public sessions only
   var quote = document.getElementById('quote');
   document.querySelectorAll('[data-open-quote]').forEach(function (b) {
@@ -146,16 +141,11 @@
       e.preventDefault();
       if (!openEl) opener = b;
       var pub = b.getAttribute('data-open-quote') === 'public';
-      document.getElementById('qkind').textContent = pub ? 'Public group session' : 'Private group session';
+      document.getElementById('qkind').textContent = document.getElementById('q-session').value = pub ? 'Public group session' : 'Private group session';
       document.getElementById('q-soundset').hidden = !pub;
       document.getElementById('qsent').textContent = '';
       show(quote, '#q-date');
     });
-  });
-  var qform = document.getElementById('qform');
-  if (qform) qform.addEventListener('submit', function (e) {
-    e.preventDefault();
-    document.getElementById('qsent').textContent = 'Thank you. This form is not connected yet, so nothing was sent.';
   });
   document.querySelectorAll('[data-close-panel],[data-close-touch]').forEach(function (b) { b.addEventListener('click', hide); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
@@ -183,19 +173,28 @@
     });
   });
 
-  /* ---------- the form ----------
-     Not connected yet: where messages go is still to be decided. */
-  var form = document.getElementById('cform');
-  if (form) form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    document.getElementById('csent').textContent = 'Thank you. This form is not connected yet, so nothing was sent.';
-  });
-  // Subscribe: not connected yet either; the mailing list is still to be chosen
-  var sub = document.getElementById('subform');
-  if (sub) sub.addEventListener('submit', function (e) {
-    e.preventDefault();
-    document.getElementById('subsent').textContent = 'Thank you. Subscribing is not connected yet, so nothing was sent.';
-  });
+  /* ---------- the forms ----------
+     All four send to the same Formspree form as the earlier acousticstates.com (its _subject and source fields say which form it was). */
+  var FORMSPREE = 'https://formspree.io/f/mgojkgro';
+  function sender(formId, statusId, thanks) {
+    var form = document.getElementById(formId), status = document.getElementById(statusId);
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.querySelector('input[type=email]');
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { status.textContent = 'Please add your email address, so we can reply.'; email.focus(); return; }
+      var btn = form.querySelector('[type=submit]'); if (btn) btn.disabled = true;
+      status.textContent = 'Sending…';
+      fetch(FORMSPREE, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); status.textContent = thanks; form.reset(); })
+        .catch(function () { status.textContent = 'Sorry, that didn’t send. Please try again in a moment.'; })
+        .then(function () { if (btn) btn.disabled = false; });
+    });
+  }
+  sender('cform', 'csent', 'Thank you. Your message has been sent, and we’ll be in touch soon.');
+  sender('qform', 'qsent', 'Thank you. Your request has been sent, and we’ll be in touch with a quote.');
+  sender('pform', 'psent', 'Thank you. Your message has been sent, and we’ll be in touch soon.');
+  sender('subform', 'subsent', 'Thank you. You’re in the loop.');
 
   /* ---------- the arrow under Upcoming performances ---------- */
   var cue = document.getElementById('scrollcue');
