@@ -434,3 +434,7 @@ footer a{color:inherit}
 @media (prefers-reduced-motion:no-preference){
 @keyframes swim{0%{transform:translate(0,0) rotate(-3deg)}50%{transform:translate(16vw,-50px) rotate(5deg)}100%{transform:translate(30vw,-14px) rotate(-1deg)}}
 }
+
+/* the koi's own layer: fixed to the screen, behind the content (z-index 2) and above the paper; under the panels */
+#h7 .koilayer{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+#h7 .koilayer .koi2{position:absolute;width:clamp(110px,13vw,190px)}

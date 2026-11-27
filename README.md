@@ -18,13 +18,13 @@ Then visit http://localhost:8080.
 
 - `index.html`: the page, the five panels that slide in (Methodology, Past events, Research, The app, Book a listening session) and the Get in touch form.
 - `css/site.css`: all the styles. The colours are paper `#f3ede9`, ink `#2a2540`, and glows of violet `#8f88d6` and orange `#ff6a3a`.
-- `js/site.js`: the hero's colours following the koi, opening and closing the panels, the form, and the scroll arrow. The koi's swim itself is CSS (`loop7`).
+- `js/site.js`: the koi's swim and the hero's colours following it, opening and closing the panels, the form, and the scroll arrow. If the script does not run, the CSS loop (`loop7`) keeps the koi swimming in the hero.
 - `img/`: Viviana's portrait, three event photos and the app image.
 - `favicon.svg`: the journey-line logo.
 
 ## Movement
 
-- The koi wanders the hero on a smooth path that never quite repeats, always facing where it goes. It swims like a koi: a few quick tail beats, then a glide, about every six and a half seconds. It looks slightly smaller higher up, as if deeper in the water. If the script does not run, a CSS loop keeps it swimming.
+- The koi swims across the whole site: it lives in a layer fixed to the screen, behind the text and cards (softly blurred under the frosted ones) and above the paper. It wanders on a smooth path that never quite repeats, always facing where it goes, sometimes slipping off one edge and coming back. It swims like a koi: a few quick tail beats, then a glide, about every six and a half seconds. It looks slightly smaller higher up, as if deeper in the water. If the script does not run, a CSS loop keeps it swimming.
 - The hero's glows lean softly towards the koi, and a bloom of pink, peach and violet trails behind it.
 - The Research tile's swirl turns, the The app tile's halo breathes, and the ring over the hero turns slowly.
 - In the Methodology panel, the sphere's rays turn about once a minute and its centre breathes.

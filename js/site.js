@@ -6,36 +6,41 @@
 (function () {
   'use strict';
 
-  /* ---------- the hero: the koi swims, and the colours follow it ----------
-     The koi wanders on a smooth path that never quite repeats (two slow waves crossing),
-     always facing where it goes. It swims like a koi: a few quick tail beats, then a glide.
-     It looks a little smaller when it is further up, as if deeper in the water.
-     The glows lean towards it, and a soft bloom of colour trails behind it.
-     (Without this script, the CSS loop in site.css keeps it swimming.) */
+  /* ---------- the koi: swims across the whole site; the hero's colours follow it ----------
+     The koi lives in a layer fixed to the screen, so it keeps swimming as people scroll.
+     It sits behind the text and cards (under the frosted vellum it shows softly blurred)
+     and above the page's paper. It wanders on a smooth path that never quite repeats,
+     always facing where it goes, sometimes slipping off one edge and coming back.
+     It swims like a koi: a few quick tail beats, then a glide. Higher up it looks a little
+     smaller, as if deeper. When it passes through the hero, the glows lean towards it and
+     a soft bloom of colour trails behind it.
+     (Without this script, the CSS loop in site.css keeps it swimming in the hero.) */
   var koi = document.getElementById('koi7');
   var wake = document.getElementById('wake7');
   if (koi && wake) {
-    var pond = koi.parentElement;
+    var pond = wake.parentElement;
     var tail = document.getElementById('k7tail'), finL = document.getElementById('k7finL'), finR = document.getElementById('k7finR');
     var glows = Array.prototype.filter.call(pond.children, function (n) { return n.classList.contains('g'); });
+    var layer = document.createElement('div');
+    layer.className = 'koilayer'; layer.setAttribute('aria-hidden', 'true');
+    koi.closest('main').appendChild(layer); layer.appendChild(koi);
     koi.style.animation = 'none'; koi.style.left = '0'; koi.style.top = '0';
     [tail, finL, finR].forEach(function (n) { if (n) n.style.animation = 'none'; });
-    var path = function (u, W, H) {                                  // where the koi is at path position u
-      return [W * (0.5 + 0.36 * Math.sin(u) + 0.06 * Math.sin(2.3 * u + 1.0)),
-              H * (0.56 + 0.2 * Math.sin(1.7 * u + 0.6) + 0.05 * Math.sin(3.1 * u))];
+    var path = function (u, W, H) {                                  // where the koi is on screen at path position u
+      return [W * (0.5 + 0.48 * Math.sin(u) + 0.07 * Math.sin(2.3 * u + 1.0)),
+              H * (0.55 + 0.3 * Math.sin(1.7 * u + 0.6) + 0.06 * Math.sin(3.1 * u))];
     };
     var u = 2.2, clock = 0, beat = 0, heading = null;
     var last = null, px = null, py = null, wx = null, wy = null, wo = 0, gx = 0, gy = 0;
     var frame = function (now) {
       requestAnimationFrame(frame);
       var dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016; last = now;
-      var pr = pond.getBoundingClientRect();
-      if (pr.bottom < 0 || pr.top > innerHeight) return;            // off screen: rest
-      var W = pond.clientWidth, H = pond.clientHeight, S = koi.getBoundingClientRect().width || 200;
+      if (document.hidden) return;
+      var W = innerWidth, H = innerHeight, S = koi.offsetWidth || 180;
       // swim, then glide: the push comes about every 6.5 seconds and eases off
       clock += dt;
       var push = Math.pow(Math.max(0, Math.sin(clock * 2 * Math.PI / 6.5)), 2);
-      u += dt * (0.1 + 0.16 * push);
+      u += dt * (0.07 + 0.11 * push);
       var p = path(u, W, H), q = path(u + 0.002, W, H);
       var x = p[0], y = p[1];
       // face along the path, turning smoothly (the drawing's head points left)
@@ -45,22 +50,25 @@
       heading += d * Math.min(1, dt * 4);
       beat += dt * (2.2 + 7 * push);                                 // the tail beats fast in the push, slowly in the glide
       var sway = Math.sin(beat) * (2 + 4 * push);
-      var depth = 0.9 + 0.14 * (y / H);                              // smaller further up, as if deeper
+      var depth = 0.85 + 0.2 * (y / H);                              // smaller further up, as if deeper
       koi.style.transform = 'translate(' + (x - S / 2) + 'px,' + (y - S / 2) + 'px) rotate(' + (heading * 180 / Math.PI + sway).toFixed(2) + 'deg) scale(' + depth.toFixed(3) + ')';
       if (tail) tail.style.transform = 'rotate(' + (Math.sin(beat - 0.6) * (10 + 16 * push)).toFixed(2) + 'deg)';
       if (finL) finL.style.transform = 'rotate(' + (Math.sin(beat * 0.7) * (8 + 10 * (1 - push))).toFixed(2) + 'deg)';
       if (finR) finR.style.transform = 'rotate(' + (-Math.sin(beat * 0.7 + 0.5) * (8 + 10 * (1 - push))).toFixed(2) + 'deg)';
       var sp = px === null ? 0 : Math.hypot(x - px, y - py) / dt; px = x; py = y;
-      // the bloom follows slowly, so the colour seems to spread where the fish has been
+      // in the hero: the bloom trails the fish and the glows lean towards it
+      var pr = pond.getBoundingClientRect();
+      if (pr.bottom < -200 || pr.top > H + 200) return;
+      var lx = x - pr.left, ly = y - pr.top;                         // the fish, in the hero's own space
+      var inside = (lx > -80 && lx < pr.width + 80 && ly > -80 && ly < pr.height + 80) ? 1 : 0;
       var k = 1 - Math.exp(-dt * 1.2);
-      if (wx === null) { wx = x; wy = y; }
-      wx += (x - wx) * k; wy += (y - wy) * k;
-      wo += ((0.55 + Math.min(sp, 200) / 400) - wo) * (1 - Math.exp(-dt * 0.8));
+      if (wx === null) { wx = lx; wy = ly; }
+      wx += (lx - wx) * k; wy += (ly - wy) * k;
+      wo += ((inside * (0.55 + Math.min(sp, 200) / 400)) - wo) * (1 - Math.exp(-dt * 0.8));
       var ws = wake.offsetWidth, sc = 1 + Math.min(sp, 200) / 260;
       wake.style.transform = 'translate(' + (wx - ws / 2) + 'px,' + (wy - ws / 2) + 'px) scale(' + sc.toFixed(3) + ',' + (sc * 0.8).toFixed(3) + ')';
       wake.style.opacity = wo.toFixed(3);
-      // the glows drift a little towards the fish
-      var tx = (x - pond.clientWidth / 2) * 0.07, ty = (y - pond.clientHeight / 2) * 0.07, f = 1 - Math.exp(-dt * 0.6);
+      var tx = inside * (lx - pr.width / 2) * 0.07, ty = inside * (ly - pr.height / 2) * 0.07, f = 1 - Math.exp(-dt * 0.6);
       gx += (tx - gx) * f; gy += (ty - gy) * f;
       glows.forEach(function (g, i) { var m = i % 2 ? 0.6 : 1; g.style.translate = (gx * m).toFixed(1) + 'px ' + (gy * m).toFixed(1) + 'px'; });
     };
