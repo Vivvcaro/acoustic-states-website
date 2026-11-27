@@ -630,3 +630,55 @@ footer a{color:inherit}
 /* buttons come alive on hover: the words thicken and deepen (by stroke, so nothing shifts), as the line draws out */
 #h7 .tk,#h7 .glassbtn{transition:color .35s ease,-webkit-text-stroke-width .35s ease,text-shadow .35s ease;-webkit-text-stroke:0 currentColor}
 #h7 .tk:hover,#h7 .glassbtn:hover,#h7 .tk:focus-visible,#h7 .glassbtn:focus-visible{color:#17142b;-webkit-text-stroke:.55px currentColor;text-shadow:0 0 .5px currentColor}
+
+/* ---- the methodology triangle: each word sits at its own corner (27 Nov) ---- */
+#h7 .tri{display:block;width:min(460px,100%);margin:14px auto 6px;text-align:center}
+#h7 .tri .tl.top{margin-bottom:-4px}
+#h7 .tri .trisvg{width:100%;margin-bottom:118px}
+#h7 .tri .trisvg .tl{position:absolute;top:calc(87.3% + 18px);transform:translateX(-50%);width:17ch;max-width:46%}
+#h7 .tri .trisvg .tl.bl{left:21.6%}
+#h7 .tri .trisvg .tl.br{left:78.4%}
+#h7 .tri .tl small{max-width:none}
+@media (max-width:480px){#h7 .tri .trisvg{margin-bottom:150px}#h7 .tri .trisvg .tl{width:15ch}#h7 .tri .tl small{font-size:13px}}
+
+/* ---- the pages open as a square on top of the site, not from the side (27 Nov) ---- */
+#h7 .side{display:grid;place-items:center;padding:max(20px,env(safe-area-inset-top,0px)) 20px max(20px,env(safe-area-inset-bottom,0px))}
+#h7 .sp{position:relative;top:auto;right:auto;bottom:auto;width:min(760px,100%);max-height:min(86vh,900px);border-radius:6px;
+  border:1px solid rgba(255,255,255,.7);box-shadow:0 40px 90px -40px rgba(60,40,120,.45),0 2px 0 rgba(255,255,255,.6) inset;
+  animation:spRise .5s cubic-bezier(.2,.8,.2,1)}
+#h7 .bookside .sp{width:min(980px,100%)}
+/* the soft glow is painted on the square itself, so it stays put while the words scroll */
+#h7 .sp>.g{display:none}
+#h7 .sp>.grain{position:absolute;inset:0;z-index:-1}
+#h7 .sp{background:radial-gradient(70% 60% at 72% 18%,rgba(255,196,170,.55),rgba(255,214,226,.3) 50%,rgba(255,214,226,0) 100%),
+  radial-gradient(60% 55% at 20% 85%,rgba(210,198,246,.5),rgba(210,198,246,0) 100%),rgba(250,247,252,.78)}
+#h7 .spin{padding:48px max(22px,min(60px,6vw)) 52px}
+#h7 .spin .sx{margin:-24px -10px 0 0}
+@keyframes spRise{from{opacity:0;transform:translateY(18px) scale(.97)}}
+@media (prefers-reduced-motion:reduce){#h7 .sp{animation:none}}
+@media (max-width:640px){#h7 .side{padding:12px}#h7 .sp{max-height:calc(100dvh - 24px)}}
+
+/* ---- the hero's Book a session: more present, still without a shape (27 Nov) ----
+   larger spaced capitals, the lilac-to-peach line always drawn in full,
+   and a soft glow of the page's colours breathing behind the words */
+#h7 .statement .herobtn{margin-top:30px;padding:12px 4px 13px;font-size:15px;letter-spacing:.34em;font-weight:400;color:#211d36;isolation:isolate}
+#h7 .statement .herobtn::after{right:.34em;height:1px;transform:scaleX(1);bottom:3px;
+  background:linear-gradient(90deg,rgba(143,136,214,0),#8f88d6 18%,#ff8a5c 82%,rgba(255,138,92,0))}
+#h7 .statement .herobtn::before{content:"";position:absolute;z-index:-1;left:-34px;right:-34px;top:-16px;bottom:-16px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,170,140,.42),rgba(220,180,240,.26) 55%,rgba(220,180,240,0));filter:blur(6px);transition:opacity .4s ease,transform .6s ease}
+#h7 .statement .herobtn:hover::before,#h7 .statement .herobtn:focus-visible::before{opacity:1;transform:scale(1.12)}
+#h7 .statement .herobtn:hover::after,#h7 .statement .herobtn:focus-visible::after{height:1.5px}
+@media (prefers-reduced-motion:no-preference){
+  #h7 .statement .herobtn::before{animation:heroBtnBreath 6s ease-in-out infinite}
+  @keyframes heroBtnBreath{50%{opacity:.6;transform:scale(1.06)}}
+}
+
+/* Read the methodology sits closer under the journey line (27 Nov) */
+#h7 .jbtn{position:relative;z-index:2;margin-top:clamp(-64px,-5vw,-34px)}
+#h7 .tri .tricenter{top:65%}
+/* Book a session: a soft pool of pale light behind the words so they read clearly on the colours */
+#h7 .statement .herobtn{font-size:16px;color:#1b1730;padding:13px 6px 14px}
+#h7 .statement .herobtn::before{left:-46px;right:-46px;top:-20px;bottom:-20px;
+  background:radial-gradient(closest-side,rgba(255,252,250,.78),rgba(255,236,232,.5) 50%,rgba(255,236,232,0));filter:blur(4px)}
+#h7 .sp>.grain{display:none}
+@media (max-width:480px){#h7 .tri .tricenter{top:63%;font-size:12px;letter-spacing:.2em}#h7 .tri .tricenter small{font-size:8px}}

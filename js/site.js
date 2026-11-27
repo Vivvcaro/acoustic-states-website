@@ -225,7 +225,7 @@
           el('animate', { attributeName: 'r', values: '8;8;38;46;8', keyTimes: '0;' + w0 + ';' + w1 + ';' + w2 + ';1', dur: DUR + 's', repeatCount: 'indefinite' }, pg);
           el('animate', { attributeName: 'opacity', values: '0;0;.85;0;0', keyTimes: '0;' + w0 + ';' + w1 + ';' + w2 + ';1', dur: DUR + 's', repeatCount: 'indefinite' }, pg);
           return; }
-        // every step's words are set along the line itself, just above it
+        // every step's words are set along the line itself, just above it (Music just below)
         var last = i === STEPS.length - 1, Lt = path.getTotalLength(), at = 0, best = 1e9;
         for (var l = 0; l <= Lt; l += 2) { var pp = path.getPointAtLength(l), dd = (pp.x - x) * (pp.x - x) + (pp.y - y) * (pp.y - y); if (dd < best) { best = dd; at = l; } }
         dot(x, y, i === 3 ? 5.7 : 3 + i * .8, last ? '#d98a2b' : '#8a6fc8', last ? 'url(#jGold)' : null);
@@ -235,13 +235,14 @@
           var below = i === 0 || i === 2 || i === 5;
           label(last ? x + 10 : (i === 0 ? x - 6 : x), below ? y + fs * 2.1 : y - fs * 1.3, STEPS[i], last ? 'gold' : '', last ? 'end' : (i === 0 ? 'start' : 'middle'));
         } else {
-          var t = el('text', { 'font-size': fs, dy: -fs * 1.1, 'class': last ? 'gold' : '' }, svg);
+          var t = el('text', { 'font-size': fs, dy: i === 2 ? fs * 1.9 : -fs * 1.1,   // Music sits under the dip
+            'class': last ? 'gold' : '' }, svg);
           var anchor = i === 0 ? 'start' : last ? 'end' : 'middle';   // the ends stay on the line
           var tp = el('textPath', { href: '#jpath', startOffset: i === 0 ? 0 : last ? Lt : at, 'text-anchor': anchor }, t); tp.textContent = STEPS[i];
         }
         if (last) {   // the gold glow when the light arrives, lingering before it fades
           var f = el('circle', { cx: x, cy: y, r: 10, fill: 'url(#jGold)', opacity: 0 }, svg), a0 = ARRIVE - .015;
-          el('animate', { attributeName: 'r', values: '10;10;52;64;70', keyTimes: '0;' + a0 + ';' + (ARRIVE + .05) + ';.93;1', dur: DUR + 's', repeatCount: 'indefinite' }, f);
+          el('animate', { attributeName: 'r', values: '10;10;84;104;116', keyTimes: '0;' + a0 + ';' + (ARRIVE + .05) + ';.93;1', dur: DUR + 's', repeatCount: 'indefinite' }, f);
           el('animate', { attributeName: 'opacity', values: '0;0;1;.9;0', keyTimes: '0;' + a0 + ';' + (ARRIVE + .04) + ';.9;1', dur: DUR + 's', repeatCount: 'indefinite' }, f);
         }
       });

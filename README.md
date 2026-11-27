@@ -18,10 +18,10 @@ Then visit http://localhost:8080.
 
 ## What's here
 
-- `index.html`: the page, the five panels that slide in (Methodology, Past events, Research, The app, Book a listening session) and the Get in touch form.
+- `index.html`: the page, the five pages that open as a square over the site (Methodology, Past events, Research, The app, Book a listening session) and the Get in touch form.
 - `css/site.css`: all the styles. The colours are paper `#f3ede9`, ink `#2a2540`, and glows of violet `#8f88d6` and orange `#ff6a3a`.
 - `js/site.js`: the koi's swim and the hero's colours following it, opening and closing the panels, the form, and the scroll arrow. If the script does not run, the CSS loop (`loop7`) keeps the koi swimming in the hero.
-- `img/`: Viviana's portrait, three event photos and the app image.
+- `img/`: Viviana's portrait, the event and tile photos, the app image and the Phantom Fish logo (The app tile).
 - `favicon.svg`: the journey-line logo.
 
 ## Movement
@@ -29,8 +29,10 @@ Then visit http://localhost:8080.
 - The koi swims across the whole site: it lives in a layer fixed to the screen, behind the text and cards (softly blurred under the frosted ones) and above the paper. It wanders on a smooth path that never quite repeats, always facing where it goes, sometimes slipping off one edge and coming back. It swims like a koi: a few quick tail beats, then a glide, about every six and a half seconds. It looks slightly smaller higher up, as if deeper in the water. If the script does not run, a CSS loop keeps it swimming.
 - The hero's glows lean softly towards the koi, and a bloom of pink, peach and violet trails behind it.
 - The Research tile's swirl turns, the The app tile's halo breathes, and the ring over the hero turns slowly.
-- In the Methodology panel, the sphere's rays turn about once a minute and its centre breathes.
-- Under "For those feeling...", the journey line from the logo carries a session's seven steps, with the Acoustic State at its peak. A soft light travels it in about 21 seconds, rests at "Integrate it into your life" while a gold glow lingers for about 9 seconds, and begins again.
+- In Methodology, a soft light travels round the triangle of imagination, attention and intention, one word at each corner.
+- At the end of Research, the sphere's rays turn about once a minute and its centre breathes.
+- The hero's Book a session sits on a soft breathing pool of light, with its line always drawn.
+- Under "For those feeling...", the journey line from the logo carries a session's seven steps, with the Acoustic State at its peak. A soft light travels it in about 21 seconds, rests at "Integrate it into your life" while a wide gold glow lingers for about 9 seconds, and begins again.
 - The testimonies rest as a stacked deck; they fan out under the pointer and one can be brought forward to read.
 - The headline words stay still.
 
